@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<h4>Campaign Details</h4>
+<br>
+<div class="container">
+  <div class="row">
+    <div>
+		<form action="{{ url_for('delete_campaign', id=campaign.id) }}">
+			<button class="btn btn-outline-dark">Delete</button>
+		</form>
+		<form action="{{ url_for('edit_campaign', id=campaign.id) }}">
+			<button class="btn btn-outline-dark">Edit</button>
+		</form>
+  </div>
+  <div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-4">
+    <div class="col">Campaign Name:</div>
+	    <p>{{ campaign.campaign_name }}</p>
+    <div class="col">Element Number:</div>
+	    <p>{{ campaign.element_number }}</p>
+    <div class="col">CPM Rate</div>
+	    <p>{{ "£" + campaign.cpm_rate }}</p>
+    <div class="col">Break Seperation:</div>
+	    <p>{{ campaign.break_seperation }}</p>
+    <div class="col">Targeting:</div>
+		<p>{{ campaign.targeting}}</p>
+    <div class="col">Booked Impressions:</div>
+		<p>{{ '{0:,}'.format(campaign.booked_impressions | int) }}</p>
+    <div class="col">Start Date:</div>
+		<p>{{ campaign.start_date.strftime('%d/%m/%Y') }}</p>
+    <div class="col">End Date:</div>
+		<p>{{ campaign.end_date.strftime('%d/%m/%Y') }}</p>
+  </div>
+</div>
+</div>
+<div class='clock_grid'>
+	<div class="container">
+		<div class="col align-items-start">
+			<table class="table table-success table-striped">
+				<tr>
+					<th></th>
+					<th>Clock Number</th>
+					<th>Start Date</th>
+					<th>End Date</th>
+				</tr>
+					{% for clock in clock_details %}
+				<tr>
+					<td>
+						<form action="">
+							<button class="btn btn-outline-success">Inspect</button>
+						</form>
+					</td>
+					<td>{{ clock.clock_number }}</td>
+					<td>{{ clock.start_date }}</td>
+					<td>{{ clock.end_date }}</td>
+				</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+<div class="campaign_details_grid">
+	<div class="container">
+		<div class="col align-items-start">
+			<table class="table table-success table-striped">
+				<tr>
+					<th>Date</th>
+					<th>Delivered Impressions</th>
+				</tr>
+					{% for details in campaign_details %}
+				<tr>
+					<td>{{ details.date }}</td>
+					<td>{{ '{0:,}'.format(details.delivered_impressions | int) }}</td>
+				</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

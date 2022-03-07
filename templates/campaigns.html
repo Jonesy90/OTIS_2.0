@@ -1,0 +1,99 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="add_button">
+	<form action="{{ url_for('add_campaign') }}">
+		<button class="btn btn-outline-dark">Add Campaign</button>
+	</form>
+</div>
+<div id="add_button">
+	<form action="{{ url_for('add_creative') }}">
+		<button class="btn btn-outline-dark">Add Creative</button>
+	</form>
+</div>
+<div id="upload_csv">
+	<form action="{{ url_for('upload_csv') }}" method="POST", enctype="multipart/form-data">
+		<div class="input-group mb-3">
+			<div id="upload_csv_input">
+				<input type="file" class="form-control" id="inputGroupFile02" name="csv">
+				<label class="input-group-text" for="inputGroupFile02">Campaign Stats Upload</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>
+<div id="bulk_upload">
+	<form action="{{ url_for('bulk_upload') }}" method="POST", enctype="multipart/form-data">
+		<div class="input-group mb-3">
+			<div id="upload_csv_input">
+				<input type="file" class="form-control" id="inputGroupFile02" name="csv">
+				<label class="input-group-text" for="inputGroupFile02">Booking Bulk Upload</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>
+<div id="upload_third_party">
+	<form action="{{ url_for('third_party_upload') }}" method="POST", enctype="multipart/form-data">
+		<div class="input-group mb-3">
+			<div id="upload_csv_input">
+				<input type="file" class="form-control" id="inputGroupFile02" name="csv">
+				<label class="input-group-text" for="inputGroupFile02">Upload 3rd Party Data</label>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</div>
+	</form>
+</div>
+<div id=date_range>
+	<label for="from">From:</label>
+	<input type="date" id="from" name="from">
+	<label for="to">To:</label>
+	<input type="date" id="to" name="to">
+	<input type="submit">
+</div>
+<div class="campaign_grid">
+	<div id="campaign_table">
+		<table cellpadding="10" cellspacing="5" border="1" class="table table-success table-striped">
+			<tr>
+				<th></th>
+				<th>Status</th>
+				<th>Element #</th>
+				<th>Campaign Name</th>
+				<th>CPM Gross (£)</th>
+				<th>Break Seperation</th>
+				<th>Targeting</th>
+				<th>Start Date</th>
+				<th>End Date</th>
+				<th>Daily Average</th>
+				<th>Booked Impressions</th>
+				<th>Delivered Impressions</th>
+				<th>% Delivered</th>
+				<th>Delivery Pacing</th>
+			</tr>
+			<tr>
+				{% for campaign in campaigns %}
+				<td>
+					<form action="{{ url_for('campaign_details', id=campaign.id) }}">
+						<button class="btn btn-outline-success">Inspect</button>
+					</form>
+				</td>
+				<td>{{ campaign.status }}</td>
+				<td>{{ campaign.element_number }}</td>
+				<td>{{ campaign.campaign_name }}</td>
+				<td>{{ "£" + campaign.cpm_rate }}</td>
+				<td>{{ campaign.break_seperation }}</td>
+				<td>{{ campaign.targeting }}</td>
+				<td>{{ campaign.start_date.strftime('%d/%m/%Y') }}</td>
+				<td>{{ campaign.end_date.strftime('%d/%m/%Y') }}</td>
+				<td>{{ '{0:,}'.format(campaign.daily_average | int) }}</td>
+				<td>{{ '{0:,}'.format(campaign.booked_impressions | int) }}</td>
+				<td>{{ '{0:,}'.format(campaign.delivered_impressions | int) }}</td>
+				<td>{{ campaign.percentage_delivered }}</td>
+				<td>{{ campaign.delivery_pacing }}</td>
+			</tr>
+				{% endfor %}
+		</table>
+	</div>
+</div>
+{% endblock %}
+

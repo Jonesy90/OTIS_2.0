@@ -1,0 +1,51 @@
+{% extends 'layout.html' %}
+			{% block content %}
+			<div id="campaign_form">
+				<form action="{{ url_for('add_creative') }}" method="POST">
+					<br>
+					<div class="container">
+					  <div class="row row">
+					    <div class="col">
+							<div class="input-group input-group-sm mb-3">
+							  <span class="input-group-text" id="inputGroup-sizing-sm">Element #</span>
+							  <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="element_number">
+							</div>
+					    </div>
+					  </div>
+					</div>
+					<div class="container">
+						<div class="row row">
+						  <div class="col">
+							  <div class="input-group input-group-sm mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Clock Number</span>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="clock_number">
+							  </div>
+						  </div>
+						</div>
+					  </div>
+					  <div class="container">
+						<div class="row row">
+						  <div class="col">
+							  <div class="input-group input-group-sm mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm">Start Date</span>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="start_date">
+							  </div>
+						  </div>
+						</div>
+					  </div>
+					  <div class="container">
+						<div class="row row">
+						  <div class="col">
+							  <div class="input-group input-group-sm mb-3">
+								<span class="input-group-text" id="inputGroup-sizing-sm">End Date</span>
+								<input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="end_date">
+							  </div>
+						  </div>
+						</div>
+					  </div>
+					  <div>
+						<button type="submit" class="btn btn-primary btn-lg">Submit</button>
+					</div>
+				</form>
+			</div>
+			{% endblock %}

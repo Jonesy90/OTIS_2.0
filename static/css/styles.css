@@ -1,0 +1,21 @@
+
+.dash_grid {
+    max-width: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+}
+
+.campaign_grid {
+max-width: auto;
+display: grid;
+padding: 10px;
+}
+
+.clock_grid {
+    max-width: auto;
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 15px;
+}
+

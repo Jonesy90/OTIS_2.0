@@ -1,0 +1,58 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div id="add_buttons">
+    <form action="{{ url_for('upload_dashboard_csv') }}" method="POST", enctype="multipart/form-data">
+        <div class="input-group mb-3">
+          <input type="file" class="form-control" id="inputGroupFile02" name="csv">
+          <label class="input-group-text" for="inputGroupFile02">Upload</label>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<div class='dash_grid'>
+    <div id="exkids_table">
+        <table cellpadding="10" cellspacing="5" border="2" class="table table-success table-striped">
+            <tr>
+                <th>Date</th>
+                <th>Content Group</th>
+                <th>Inventory Available</th>
+                <th>Delivered Impressions</th>
+                <th>STR %</th>
+            </tr>
+                {% for dash in entertainment %}
+            <tr>
+                <td>{{ dash.date }}</td>
+                <td>{{ dash.content_provider_group }}</td>
+                <td>{{ '{0:,}'.format(dash.inventory | int) }}</td>
+                <td>{{ '{0:,}'.format(dash.delivered_impressions | int) }}</td>
+                <td>{{ dash.str }}</td>
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
+    <div id="kids_table">
+        <table cellpadding="10" cellspacing="5" border="2" class="table table-success table-striped">
+            <tr>
+                <th>Date</th>
+                <th>Content Group</th>
+                <th>Inventory Available</th>
+                <th>Delivered Impressions</th>
+                <th>STR %</th>
+            </tr>
+                {% for dash in kids %}
+            <tr>
+                <td>{{ dash.date }}</td>
+                <td>{{ dash.content_provider_group }}</td>
+                <td>{{ '{0:,}'.format(dash.inventory | int) }}</td>
+                <td>{{ '{0:,}'.format(dash.delivered_impressions | int)}}</td>
+                <td>{{ dash.str }}</td>
+            </tr>
+                {% endfor %}
+        </table>
+    </div>
+</div>
+
+
+{% endblock %}

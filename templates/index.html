@@ -1,0 +1,87 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+
+<div class="container">
+    <div class="col align-items-start">
+        <table class="table table-success table-striped">
+            <tr>
+                <th>Inspect</th>
+                <th>Status</th>
+                <th>Element Number</th>
+                <th>Campaign Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Booked Impressions</th>
+                <th>Delivered Impressions</th>
+                <th>Daily Average</th>
+                <th>Days Remaining</th>
+                <th>Delivery Pacing</th>
+            </tr>
+                {% for campaign in campaigns %}
+                    {% if campaign.delivery_pacing < '0%' %}
+                        <tr>
+                            <td>
+                                <form action="{{ url_for('campaign_details', id=campaign.id) }}">
+                                    <button class="btn btn-outline-success">Inspect</button>
+                                </form>
+                            </td>
+                            <td>{{ campaign.status }}</td>
+                            <td>{{ campaign.element_number }}</td>
+                            <td>{{ campaign.campaign_name }}</td>
+                            <td>{{ campaign.start_date.strftime('%d/%m/%Y') }}</td>
+                            <td>{{ campaign.end_date.strftime('%d/%m/%Y') }}</td>
+                            <td>{{ '{0:,}'.format(campaign.booked_impressions | int) }}</td>
+                            <td>{{ '{0:,}'.format(campaign.delivered_impressions | int) }}</td>
+                            <td>{{ '{0:,}'.format(campaign.daily_average | int) }}</td>
+                            <td>{{ (campaign.end_date - today).days + 1 }}</td>
+                            <td>{{ campaign.delivery_pacing }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+        </table>
+    </div>
+</div>
+
+<div class="container">
+    <div class="col align-items-start">
+        <table class="table table-success table-striped">
+            <tr>
+                <th>Inspect</th>
+                <th>Status</th>
+                <th>Element Number</th>
+                <th>Campaign Name</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Booked Impressions</th>
+                <th>Delivered Impressions</th>
+                <th>Daily Average</th>
+                <th>Days Remaining</th>
+                <th>Delivery Pacing</th>
+            </tr>
+                {% for campaign in campaigns %}
+                    {% if campaign.status == 'Pending' %}
+                        <tr>
+                            <td>
+                                <form action="{{ url_for('campaign_details', id=campaign.id) }}">
+                                    <button class="btn btn-outline-success">Inspect</button>
+                                </form>
+                            </td>
+                            <td>{{ campaign.status }}</td>
+                            <td>{{ campaign.element_number }}</td>
+                            <td>{{ campaign.campaign_name }}</td>
+                            <td>{{ campaign.start_date.strftime('%d/%m/%Y') }}</td>
+                            <td>{{ campaign.end_date.strftime('%d/%m/%Y') }}</td>
+                            <td>{{ '{0:,}'.format(campaign.booked_impressions | int) }}</td>
+                            <td>{{ '{0:,}'.format(campaign.delivered_impressions | int) }}</td>
+                            <td>{{ '{0:,}'.format(campaign.daily_average | int) }}</td>
+                            <td>{{ (campaign.end_date - today).days + 1 }}</td>
+                            <td>{{ campaign.delivery_pacing }}</td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

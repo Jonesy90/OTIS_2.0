@@ -1,0 +1,100 @@
+ENTERTAINMENT_CPS = [
+	'CBS Action',
+	'CBS Drama',
+	'CBS Horror',
+	'Crime',
+	'Discovery',
+	'E! Entertainment',
+	'Food Network',
+	'History Channel',
+	'Investigation Discovery',
+	'Lifetime',
+	'MTVNE',
+	'Military History',
+	'Nat Geo',
+	'Paramount TV',
+	'Syfy',
+	'TLC Discovery',
+	'Zone Reality',
+	'Really',
+	'Tastemade']
+
+
+KIDS_CPS = [
+	'Boomerang',
+	'Boomerang CUTV',
+	'Cake Entertainment',
+	'Cake Kids',
+	'Cake Playlist',
+	'Cartoon Network',
+	'Cartoon Network CUTV',
+	'Cartooninto',
+	'Cartoonito CUTV',
+	'DHX',
+	'DHX Playlist',
+	'DHX Plus',
+	'DHX Plus Playlist',
+	'Disney Channel',
+	'Dinsey Junior',
+	'Disney XD',
+	'HIT',
+	'HIT Playlist',
+	'HIT Plus',
+	'HIT Plus Playlist',
+	'Nickelodeon',
+	'Nickeloden Jr',
+	'Nicktoons',
+	'Pop',
+	'Tiny Pop',
+	'PGS',
+	'ZooMoo',
+	'Jetpack',
+	'Moonbug',
+	'Boatrocker',
+	'9Story']
+
+
+CHANNEL_4 = ['Channel 4']
+
+CHANNEL_5 = ['Channel 5']
+
+UKTV = [
+	'Alibi',
+	'Dave',
+	'Drama',
+	'Gold',
+	'Watch',
+	'Yesterday'
+]
+
+SKY = [
+	'Sky Max',
+	'Sky 1 Gold',
+	'Sky 1 Gold HD',
+	'Sky Max HD',
+	'Sky Arts',
+	'Sky Arts Gold',
+	'Sky Arts Gold HD',
+	'Sky Cinema Disney HD',
+	'Sky Cinema HD',
+	'Sky Comedy',
+	'Sky Comedy HD',
+	'Sky Crime',
+	'Sky Crime Gold',
+	'Sky Crime Gold HD',
+	'Sky Crime HD',
+	'Sky Living',
+	'Sky Living Gold',
+	'Sky Living Gold HD',
+	'Sky Living HD',
+	'Sky News',
+	'Sky Sports 5',
+	'Sky Comedy Gold HD',
+	'Sky Documentaries Gold HD',
+	'Sky Documentaries HD',
+	'Sky Nature Gold HD',
+	'Sky Documentaries',
+	'Sky Nature',
+	'Sky Nature Gold',
+	'Sky Documentaries Gold'
+]
