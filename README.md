@@ -1,6 +1,6 @@
 # OTIS 2.0 (Operations Tracker Insight System)
 
-## What it does?
+## Description
 An application hold past, present and future bookings. Calculates the daily delivery required, remaining delivery, delivered percentage and the pacing percentage. This determines which booking requires attention and action, within the given adserving platform.
 
 It holds a number of pages - 
