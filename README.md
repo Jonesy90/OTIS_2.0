@@ -18,3 +18,8 @@ It holds a number of pages -
 ### VMUK
 <img width="1755" alt="Screenshot 2022-03-07 at 12 45 12" src="https://user-images.githubusercontent.com/4954209/157037170-b36d2a07-ccfe-480a-996b-03bea4a647b5.png">
 
+## Development Setup & Running Application
+1. Setup a virtual enviroment with `python3 -m venv env`
+2. Activate the virtual enviroment with `source ./env/bin/activate`
+3. Install all the libraries within requirements.txt `pip install -r requirements.txt`
+4. Run the application `python3 app.py`
