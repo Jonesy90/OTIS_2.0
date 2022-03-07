@@ -44,13 +44,15 @@
 		</div>
 	</form>
 </div>
-<div id=date_range>
-	<label for="from">From:</label>
-	<input type="date" id="from" name="from">
-	<label for="to">To:</label>
-	<input type="date" id="to" name="to">
-	<input type="submit">
-</div>
+<form action="{{ url_for('filtered_campaigns') }}" method="POST">
+	<div id=date_range>
+		<label for="from">From:</label>
+		<input type="date" id="from" name="from">
+		<label for="from">To:</label>
+		<input type="date" id="from" name="to">
+		<input type="submit">
+	</div>
+</form>
 <div class="campaign_grid">
 	<div id="campaign_table">
 		<table cellpadding="10" cellspacing="5" border="1" class="table table-success table-striped">

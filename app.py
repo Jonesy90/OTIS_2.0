@@ -22,13 +22,28 @@ def index():
 @app.route('/dashboard')
 def dashboard():
 	dashboard = ContentProviderGroup.query.all()
-	entertainment = ContentProviderGroup.query.filter_by(content_provider_group='3|Ex Kids Content')
+	entertainment = ContentProviderGroup.query.filter(content_provider_group='3|Ex Kids Content')
 	kids = ContentProviderGroup.query.filter_by(content_provider_group='3|Kids Content')
 	populate_dashboard()
 	return render_template('dashboard.html', dashboard=dashboard, entertainment=entertainment, kids=kids)
 
 
-@app.route('/campaigns')
+@app.route('/filtered_campaigns',  methods=['GET', 'POST'])
+def filtered_campaigns():
+	start_date = request.form['from']
+	end_date = request.form['to']
+	
+	filtered_campaigns = Booking.query.filter(Booking.start_date>=start_date, Booking.end_date<=end_date)
+	for campaign in filtered_campaigns:
+		campaign.delivered_impressions = campaign_total(campaign.element_number)
+		campaign.percentage_delivered = percentage_delivered(campaign.element_number)
+		campaign.daily_average = daily_average(campaign.element_number)
+		campaign.delivery_pacing = campaign_pace(campaign.element_number)
+		campaign.status = campaign_status(campaign.element_number)
+
+	return render_template('campaigns.html', campaigns=filtered_campaigns)
+
+@app.route('/campaigns', methods=['GET', 'POST'])
 def campaigns():
 	campaigns = Booking.query.all()
 	for campaign in campaigns:
@@ -271,7 +286,7 @@ def bulk_upload():
 		data = csv.DictReader(csvfile)
 		for row in data:
 			status = ""
-			element_number = row['element number']
+			element_number = row['\ufeffelement number']
 			campaign_name = row['campaign name']
 			cpm_rate = row['cpm rate']
 			start_date = datetime.datetime.strptime(row['start date'], '%d/%m/%Y').date()
